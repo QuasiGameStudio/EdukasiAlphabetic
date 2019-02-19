@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Home.unity
+    guid: 4814cc8b8ab3a494782614faf1480725
+  - enabled: 1
+    path: Assets/Scenes/LevelSelector.unity
+    guid: 0ab15508ce104b24abb48f3c3273d000
+  - enabled: 1
+    path: Assets/Scenes/TebakHuruf.unity
+    guid: 805169ef63e3e6a4cb0a7a6c22fb88c0
+  - enabled: 1
+    path: Assets/Scenes/PasanganHuruf.unity
+    guid: 81ee98bdb90926a4e8fc18aaffdd08c6
+  - enabled: 1
+    path: Assets/Scenes/PengenalanBenda.unity
+    guid: 2b8408201c74ae746a9b2b7d160a4515
+  - enabled: 1
+    path: Assets/Scenes/PengenalanHuruf1.unity
+    guid: 8cac84542e1db794c9d86d0569a09789
+  - enabled: 1
+    path: Assets/Scenes/PengenalanHuruf2.unity
+    guid: 99094a90022664445bb27d297f8aef6e
+  - enabled: 1
+    path: Assets/Scenes/PuzzleHuruf.unity
+    guid: 44c0be80d6a544a4c9c74040723ccc8c
+  - enabled: 1
+    path: Assets/Scenes/Reward.unity
+    guid: fa4688c2eb9217b48abdca767998d6dd
+  - enabled: 1
+    path: Assets/Scenes/StudySelector.unity
+    guid: 605dc86671531364b854d9ebf7b7c25e
+  - enabled: 1
+    path: Assets/Scenes/TebakBentuk.unity
+    guid: 30f7ce04d4bd7ef458dfaa2f38c89271
+  - enabled: 1
+    path: Assets/Scenes/TebakHurufKecil.unity
+    guid: 8134eea7ce65fcc49b4c1433f078ffaf
