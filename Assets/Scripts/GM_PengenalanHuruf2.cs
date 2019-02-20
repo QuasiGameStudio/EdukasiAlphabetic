@@ -15,12 +15,16 @@ public class GM_PengenalanHuruf2 : MonoBehaviour {
 	private AudioClip[] soundLatters;
 
 	[SerializeField]
-	private Image[] imageHuruf;
+	private GameObject[] imageHuruf;
 
 	[SerializeField]
 	private AudioSource soundLatter;
 
 	private bool boolLowLatter;
+
+	private bool autoButton;
+
+	private Coroutine autoCoroutine;
 	// Use this for initialization
 	void Start () {
 		boolLowLatter=false;
@@ -35,18 +39,24 @@ public class GM_PengenalanHuruf2 : MonoBehaviour {
 	private void SetLatter(){
 		if (!boolLowLatter){
 			for (int i = 0; i<uplatters.Length; i++){
-				imageHuruf[i].sprite = uplatters[i];
-				imageHuruf[i].SetNativeSize();
+				imageHuruf[i].transform.GetChild(0).GetComponent<Image>().sprite = uplatters[i];
 			}
 		}else{
 			for (int i = 0; i<lowlatters.Length; i++){
-				imageHuruf[i].sprite = lowlatters[i];
-				imageHuruf[i].SetNativeSize();
+				imageHuruf[i].transform.GetChild(i).GetComponent<Image>().sprite = lowlatters[i];
 			}
 		}
 	}
 
 	public void ClickLetter(int indexLetter){
+		autoButton=false;
+		if (autoCoroutine!=null){
+			StopCoroutine(autoCoroutine);
+		}
+		PlaySound(indexLetter);
+	}
+
+	private void PlaySound(int indexLetter){
 		soundLatter.clip = soundLatters[indexLetter];
 		soundLatter.Play();
 	}
@@ -61,4 +71,26 @@ public class GM_PengenalanHuruf2 : MonoBehaviour {
 		SetLatter();
 	}
 
+	public void AutoButtonActive(){
+		if(!autoButton){
+			autoButton = true;
+			autoCoroutine = StartCoroutine(AutoPlay());
+			Debug.Log("true");
+		}else{
+			autoButton=false;
+			StopCoroutine(autoCoroutine);
+		}
+	}
+
+	private IEnumerator AutoPlay()
+	{
+		for (int i = 0; i<uplatters.Length;i++){
+			Debug.Log(i);
+			imageHuruf[i].GetComponent<Animator>().SetTrigger("Start");
+			PlaySound(i);
+			yield return new WaitForSeconds(2);
+			imageHuruf[i].GetComponent<Animator>().SetTrigger("Start");
+		}
+		autoButton=false;
+	}
 }

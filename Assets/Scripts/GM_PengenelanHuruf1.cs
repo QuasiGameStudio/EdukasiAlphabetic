@@ -43,10 +43,12 @@ public class GM_PengenelanHuruf1 : MonoBehaviour {
 
 	private IEnumerator AutoPlay()
 	{
-		for (int i = 0; i < uplatters.Length; i++)
+		for (int i = indexLatter; i < uplatters.Length; i++)
 		{
-			indexLatter++;
+			GameObject a;
+			// a.GetComponent<Animator>().Play("")
 			SetLatter();
+			indexLatter++;
 			yield return new WaitForSeconds(2);
 		}
 		
