@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneController : MonoBehaviour {
+public class SceneController : Singleton<SceneController> {
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +17,10 @@ public class SceneController : MonoBehaviour {
 
 	public void GoToScene(string sceneName){
 		SceneManager.LoadScene(sceneName);
+	}
+
+	public void GoToLevel(string sceneName){
+		AdMobmanager.Instance.ShowInterstitial(sceneName);
 	}
 
 	public void RestartScene(){
