@@ -53,9 +53,11 @@ public class GM_PengenalanHuruf2 : MonoBehaviour {
 		autoButton=false;
 		if (autoCoroutine!=null){
 			StopCoroutine(autoCoroutine);
+			imageHuruf[indexLatter].GetComponent<Animator>().Play("AlphabetRotate");			
 			imageHuruf[indexLatter].GetComponent<Animator>().SetTrigger("Start");
 			autoCoroutine=null;
 		}
+		
 		PlaySound(indexLetter);
 	}
 
@@ -78,10 +80,10 @@ public class GM_PengenalanHuruf2 : MonoBehaviour {
 		if(!autoButton){
 			autoButton = true;
 			autoCoroutine = StartCoroutine(AutoPlay());
-			Debug.Log("true");
 		}else{
 			autoButton=false;
 			StopCoroutine(autoCoroutine);
+			autoCoroutine=null;
 			imageHuruf[indexLatter].GetComponent<Animator>().SetTrigger("Start");
 		}
 	}
@@ -94,6 +96,7 @@ public class GM_PengenalanHuruf2 : MonoBehaviour {
 			yield return new WaitForSeconds(2);
 			imageHuruf[indexLatter].GetComponent<Animator>().SetTrigger("Start");
 		}
+		indexLatter=0;
 		autoButton=false;
 	}
 }

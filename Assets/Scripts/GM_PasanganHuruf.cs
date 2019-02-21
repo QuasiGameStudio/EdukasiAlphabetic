@@ -111,9 +111,11 @@ public class GM_PasanganHuruf : MonoBehaviour {
 
 	public void GiveAnswer(int userAnswer){
 		if(!this.userAnswer.Contains(userAnswer)){
+			if(indexUserAnswer < 2){
 				this.userAnswer[indexUserAnswer]=userAnswer;
 				indexUserAnswer++;
 				options[userAnswer].GetComponent<Image>().color = new Color32(22,192,216,255);
+			}
 		}else{
 			if (indexUserAnswer > 0){
 				indexUserAnswer--;
@@ -121,6 +123,7 @@ public class GM_PasanganHuruf : MonoBehaviour {
 			}
 			options[userAnswer].GetComponent<Image>().color = new Color32(255,255,255,255);
 		}
+		Debug.Log(indexUserAnswer);
 	}
 
 	private void CheckAnswer () {

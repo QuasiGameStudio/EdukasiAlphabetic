@@ -41,17 +41,13 @@ public class GM_PengenelanHuruf1 : MonoBehaviour {
 		
 	}
 
-	private IEnumerator AutoPlay()
-	{
-		for (int i = indexLatter; i < uplatters.Length; i++)
-		{
-			GameObject a;
-			// a.GetComponent<Animator>().Play("")
-			SetLatter();
-			indexLatter++;
-			yield return new WaitForSeconds(2);
+	public void PlaySound(){
+		if (autoCoroutine!=null){
+			autoButton=false;
+			StopCoroutine(autoCoroutine);
+			autoCoroutine=null;
 		}
-		
+		SetLatter();
 	}
 
 	private void SetLatter(){
@@ -59,10 +55,16 @@ public class GM_PengenelanHuruf1 : MonoBehaviour {
 		imageHurufKecil.sprite = lowlatters[indexLatter];
 		soundLatter.clip = soundLatters[indexLatter];
 		soundLatter.Play();
+
 	}
 
 	public void Next(){
 		autoButton=false;
+		if (autoCoroutine!=null){
+			autoButton=false;
+			StopCoroutine(autoCoroutine);
+			autoCoroutine=null;
+		}
 		indexLatter++;
 		if (indexLatter > 25){
 			indexLatter = 0;
@@ -72,6 +74,11 @@ public class GM_PengenelanHuruf1 : MonoBehaviour {
 
 	public void Prev(){
 		autoButton=false;
+		if (autoCoroutine!=null){
+			autoButton=false;
+			StopCoroutine(autoCoroutine);
+			autoCoroutine=null;
+		}
 		indexLatter--;
 		if(indexLatter < 0){
 			indexLatter = 25;
@@ -83,12 +90,26 @@ public class GM_PengenelanHuruf1 : MonoBehaviour {
 		if (!autoButton){
 			autoButton=true;
 			autoCoroutine = StartCoroutine(AutoPlay());
-			Debug.Log("true");
+			soundLatter.Play();
 		}else{
 			autoButton=false;
 			StopCoroutine(autoCoroutine);
-			Debug.Log("false");
+			autoCoroutine=null;
 		}
-		soundLatter.Play();
+	}
+
+	private IEnumerator AutoPlay()
+	{
+		if (indexLatter == 25){
+			indexLatter=0;
+		}
+		for (int i = indexLatter; i < uplatters.Length; i++)
+		{
+			SetLatter();
+			yield return new WaitForSeconds(2);
+			indexLatter++;
+		}
+		indexLatter=0;	
+		autoButton=false;	
 	}
 }

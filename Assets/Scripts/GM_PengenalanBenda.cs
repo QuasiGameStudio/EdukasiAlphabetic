@@ -36,6 +36,11 @@ public class GM_PengenalanBenda : MonoBehaviour {
 	private AudioSource soundOutput;
 
 	private int indexLatter;
+
+	private bool autoButton;
+
+	private Coroutine autoCoroutine;
+	private Coroutine playSoundCoroutine;
 	// Use this for initialization
 	void Start () {
 		indexLatter =0;
@@ -59,6 +64,11 @@ public class GM_PengenalanBenda : MonoBehaviour {
 		if (indexLatter > 25){
 			indexLatter = 0;
 		}
+		if (autoCoroutine != null){
+			autoButton=false;
+			StopCoroutine(autoCoroutine);
+			autoCoroutine=null;
+		}
 		SetLatter();
 	}
 
@@ -66,6 +76,11 @@ public class GM_PengenalanBenda : MonoBehaviour {
 		indexLatter--;
 		if(indexLatter < 0){
 			indexLatter = 25;
+		}
+		if (autoCoroutine != null){
+			autoButton=false;
+			StopCoroutine(autoCoroutine);
+			autoCoroutine=null;
 		}
 		SetLatter();
 	}
@@ -80,7 +95,16 @@ public class GM_PengenalanBenda : MonoBehaviour {
 
 	public void PlayClip(){
 		// StartCoroutine("_PlayClip");
-		StartCoroutine(_PLayClip());
+		if(autoCoroutine != null){
+			autoButton=false;
+			StopCoroutine(autoCoroutine);
+			autoCoroutine=null;
+		}
+		if (playSoundCoroutine != null){
+			StopCoroutine(playSoundCoroutine);
+			playSoundCoroutine =null;
+		}
+		playSoundCoroutine = StartCoroutine(_PLayClip());
 	}
 
 	private IEnumerator _PLayClip()
@@ -95,4 +119,27 @@ public class GM_PengenalanBenda : MonoBehaviour {
 		soundOutput.Play();
 	}
 	
+
+	public void AutoButtonActive(){
+		if (!autoButton){
+			autoButton=true;
+			autoCoroutine = StartCoroutine(AutoPlay());
+			// soundLatter.Play();
+		}else{
+			autoButton=false;
+			StopCoroutine(autoCoroutine);
+			autoCoroutine=null;
+		}
+	}
+
+	private IEnumerator AutoPlay()
+	{
+		for (int i = indexLatter; i < uplatters.Length; i++)
+		{
+			SetLatter();
+			yield return new WaitForSeconds(3);
+			indexLatter++;
+		}
+		
+	}
 }
