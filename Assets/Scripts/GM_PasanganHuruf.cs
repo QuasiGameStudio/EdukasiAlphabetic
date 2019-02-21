@@ -19,7 +19,7 @@ public class GM_PasanganHuruf : MonoBehaviour {
 	private AudioSource soundLatter;
 
 	[SerializeField]
-	private Image[] options;
+	private GameObject[] options;
 
 	private int[] randomUpLatters;
 	private int[] randomLowLatters;
@@ -75,10 +75,11 @@ public class GM_PasanganHuruf : MonoBehaviour {
 			if (!answer.Contains(indexAnswer)){
 				answer[i]=indexAnswer;
 				if (i == 0){
-					options[indexAnswer].sprite=upLatters[mainNumber];
+					options[indexAnswer].transform.GetChild(0).GetComponent<Image>().sprite=upLatters[mainNumber];
 				}else{
-					options[indexAnswer].sprite=lowLatters[mainNumber];
+					options[indexAnswer].transform.GetChild(0).GetComponent<Image>().sprite=lowLatters[mainNumber];
 				}
+				options[indexAnswer].transform.GetChild(0).GetComponent<Image>().SetNativeSize();
 				i++;
 			}
 		}while(i != 2);
@@ -94,36 +95,37 @@ public class GM_PasanganHuruf : MonoBehaviour {
 					if(randomUpLatters[indexUp] == mainNumber){
 						indexUp++;
 					}
-					options[i].sprite=upLatters[randomUpLatters[indexUp]];
+					options[i].transform.GetChild(0).GetComponent<Image>().sprite=upLatters[randomUpLatters[indexUp]];
 				}else{
 					indexLow++;
 					if(randomLowLatters[indexLow] == mainNumber){
 						indexLow++;
 					}
-					options[i].sprite=lowLatters[randomLowLatters[indexLow]];
+					options[i].transform.GetChild(0).GetComponent<Image>().sprite=lowLatters[randomLowLatters[indexLow]];
 				}
 			}
+			options[i].transform.GetChild(0).GetComponent<Image>().SetNativeSize();
+			options[i].GetComponent<Image>().color = new Color32(255,255,255,255);
 		}
 	}
 
 	public void GiveAnswer(int userAnswer){
 		if(!this.userAnswer.Contains(userAnswer)){
-			if(indexUserAnswer <2){
 				this.userAnswer[indexUserAnswer]=userAnswer;
 				indexUserAnswer++;
-			}
+				options[userAnswer].GetComponent<Image>().color = new Color32(22,192,216,255);
 		}else{
-			this.userAnswer[indexUserAnswer]=-1;
-			indexUserAnswer--;
+			if (indexUserAnswer > 0){
+				indexUserAnswer--;
+				this.userAnswer[indexUserAnswer]=-1;
+			}
+			options[userAnswer].GetComponent<Image>().color = new Color32(255,255,255,255);
 		}
-		Debug.Log(userAnswer);
 	}
 
 	private void CheckAnswer () {
 		if (answer.Contains(userAnswer[0]) && answer.Contains(userAnswer[1])) {
 			playTime= playTime+1;
-			Debug.Log(playTime);
-			Debug.Log ("nice");
 			StartCoroutine(showPopUp());
 		}
 	}

@@ -24,6 +24,8 @@ public class GM_PengenalanHuruf2 : MonoBehaviour {
 
 	private bool autoButton;
 
+	private int indexLatter;
+
 	private Coroutine autoCoroutine;
 	// Use this for initialization
 	void Start () {
@@ -37,14 +39,13 @@ public class GM_PengenalanHuruf2 : MonoBehaviour {
 	}
 
 	private void SetLatter(){
-		if (!boolLowLatter){
-			for (int i = 0; i<uplatters.Length; i++){
+		for (int i = 0; i<uplatters.Length; i++){
+			if (!boolLowLatter){
 				imageHuruf[i].transform.GetChild(0).GetComponent<Image>().sprite = uplatters[i];
+			}else{
+				imageHuruf[i].transform.GetChild(0).GetComponent<Image>().sprite = lowlatters[i];
 			}
-		}else{
-			for (int i = 0; i<lowlatters.Length; i++){
-				imageHuruf[i].transform.GetChild(i).GetComponent<Image>().sprite = lowlatters[i];
-			}
+			// imageHuruf[i].transform.GetChild(0).GetComponent<Image>().SetNativeSize();
 		}
 	}
 
@@ -52,6 +53,8 @@ public class GM_PengenalanHuruf2 : MonoBehaviour {
 		autoButton=false;
 		if (autoCoroutine!=null){
 			StopCoroutine(autoCoroutine);
+			imageHuruf[indexLatter].GetComponent<Animator>().SetTrigger("Start");
+			autoCoroutine=null;
 		}
 		PlaySound(indexLetter);
 	}
@@ -79,17 +82,17 @@ public class GM_PengenalanHuruf2 : MonoBehaviour {
 		}else{
 			autoButton=false;
 			StopCoroutine(autoCoroutine);
+			imageHuruf[indexLatter].GetComponent<Animator>().SetTrigger("Start");
 		}
 	}
 
 	private IEnumerator AutoPlay()
 	{
-		for (int i = 0; i<uplatters.Length;i++){
-			Debug.Log(i);
-			imageHuruf[i].GetComponent<Animator>().SetTrigger("Start");
-			PlaySound(i);
+		for (indexLatter = 0; indexLatter<uplatters.Length;indexLatter++){
+			imageHuruf[indexLatter].GetComponent<Animator>().SetTrigger("Start");
+			PlaySound(indexLatter);
 			yield return new WaitForSeconds(2);
-			imageHuruf[i].GetComponent<Animator>().SetTrigger("Start");
+			imageHuruf[indexLatter].GetComponent<Animator>().SetTrigger("Start");
 		}
 		autoButton=false;
 	}
