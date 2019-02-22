@@ -33,8 +33,8 @@ public class AdMobmanager : Singleton<AdMobmanager> {
 	// private string interstitialId = "ca-app-pub-3204981671781860/8130856791";
 
 	//test ads id
-	private string bannerId = "ca-app-pub-3940256099942544/6300978111";	
-	private string interstitialId = "ca-app-pub-3940256099942544/1033173712";
+	private string[] bannerId = new string[3];
+	private string[] interstitialId = new string[5];
 
 	//Edit with your device id
 	private string testDeviceId = "81A5D70CE479330C99C85E799E15DA1A";
@@ -45,6 +45,8 @@ public class AdMobmanager : Singleton<AdMobmanager> {
 	private static AdMobmanager Instance;
 
 	int tryingToShowInterstitial;
+	bool showBanner;
+	bool showInterstitial;
 
 	void Awake(){
 
@@ -69,32 +71,32 @@ public class AdMobmanager : Singleton<AdMobmanager> {
 		}
 		
 // #if GOOGLE_MOBILE_ADS
-	
-		// bannerView = new BannerView(bannerId, AdSize.SmartBanner, AdPosition.Bottom);		
-
-
-		if(testingMode)
-			requestBanner = new AdRequest.Builder().AddTestDevice(testDeviceId).Build();
-		else
-			requestBanner = new AdRequest.Builder().Build();
-
-		// interstitial = new InterstitialAd(interstitialId);
-
-		bannerView.Show();
-
 		
 // #endif
-		RequestInterstitial();
+		if (showBanner){
+			RequestBanner();
+		}
+		if (showInterstitial){
+			RequestInterstitial();
+		}
 
 
 	}
 
 	public void SetBannerView(int id){
-		// bannerView = new BannerView(bannerId[id], AdSize.SmartBanner, AdPosition.Bottom);		
+		bannerView = new BannerView(bannerId[id], AdSize.SmartBanner, AdPosition.Bottom);		
 	}
 
 	public void SetInterstitial(int id){
-		// interstitial = new InterstitialAd(interstitialId[id]);
+		interstitial = new InterstitialAd(interstitialId[id]);
+	}
+
+	public void isShowBanner(bool showBanner){
+		this.showBanner = showBanner;
+	}
+
+	public void isShowInterstitial(bool showInterstitial){
+		this.showInterstitial = showInterstitial;
 	}
 
 	public void DestroyBanner(){
@@ -103,6 +105,16 @@ public class AdMobmanager : Singleton<AdMobmanager> {
 
 	public void DestoryInterstitial(){
 		interstitial.Destroy();
+	}
+
+	void RequestBanner(){
+
+		if(testingMode)
+			requestBanner = new AdRequest.Builder().AddTestDevice(testDeviceId).Build();
+		else
+			requestBanner = new AdRequest.Builder().Build();
+
+		bannerView.Show();
 	}
 
 	void RequestInterstitial()
@@ -161,7 +173,14 @@ public class AdMobmanager : Singleton<AdMobmanager> {
 		//MobileAds.Initialize(appId);
 		//ShowBanner();
 		//ShowInterstitial();
-		
+		bannerId[0] = "ca-app-pub-3940256099942544/6300978111";
+		bannerId[1] = "ca-app-pub-3940256099942544/6300978111";
+		bannerId[2] = "ca-app-pub-3940256099942544/6300978111";	
+		interstitialId[0] = "ca-app-pub-3940256099942544/1033173712";
+		interstitialId[1] = "ca-app-pub-3940256099942544/1033173712";
+		interstitialId[2] = "ca-app-pub-3940256099942544/1033173712";
+		interstitialId[3] = "ca-app-pub-3940256099942544/1033173712";
+		interstitialId[4] = "ca-app-pub-3940256099942544/1033173712";
 	}
 	
 	// Update is called once per frame
