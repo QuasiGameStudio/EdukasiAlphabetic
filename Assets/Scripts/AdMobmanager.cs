@@ -69,15 +69,12 @@ public class AdMobmanager : Singleton<AdMobmanager> {
 		if(bannerView != null){
 			bannerView.Hide();
 		}
-		
-// #if GOOGLE_MOBILE_ADS
-		
-// #endif
+
 		if (showBanner){
 			RequestBanner();
 		}
 		if (showInterstitial){
-			RequestInterstitial();
+			ShowInterstitial();
 		}
 
 
@@ -138,29 +135,29 @@ public class AdMobmanager : Singleton<AdMobmanager> {
 // #if GOOGLE_MOBILE_ADS
 	// Called when an ad request has successfully loaded.
 	public void HandleOnAdLoaded(object sender, EventArgs args)
-    {
-		
-    }
+	{
+	
+	}
 
-    public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
-    {
+	public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+	{
 		SceneController.Instance.GoToScene(goToSceneWithAdName);
-    }
+	}
 
-    public void HandleOnAdOpened(object sender, EventArgs args)
-    {
-        
-    }
+	public void HandleOnAdOpened(object sender, EventArgs args)
+	{
+			
+	}
 
-    public void HandleOnAdClosed(object sender, EventArgs args)
-    {
+	public void HandleOnAdClosed(object sender, EventArgs args)
+	{
 		SceneController.Instance.GoToScene(goToSceneWithAdName);			
 	}
 
-    public void HandleOnAdLeavingApplication(object sender, EventArgs args)
-    {
-        
-    }
+	public void HandleOnAdLeavingApplication(object sender, EventArgs args)
+	{
+			
+	}
 	// Called when the user is about to return to the app after an ad click.
 	
 	
@@ -211,14 +208,24 @@ public class AdMobmanager : Singleton<AdMobmanager> {
 
 	public void ShowInterstitial(){
 // #if GOOGLE_MOBILE_ADS
-		if (interstitial.IsLoaded())
-		{
-			interstitial.Show();
+		while (tryingToShowInterstitial < 10){
+			if (interstitial.IsLoaded())
+			{
+				interstitial.Show();
+				break;
+			}
+			else
+			{
+				RequestInterstitial();
+			}
+			tryingToShowInterstitial++;
 		}
-		else
-		{
-			RequestInterstitial();
+
+		if(tryingToShowInterstitial >= 10){
+			SceneController.Instance.GoToScene(goToSceneWithAdName);		
 		}
+		
+		tryingToShowInterstitial=0;
 // #endif
 	}
 

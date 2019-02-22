@@ -56,6 +56,7 @@ public class AdManagerController : MonoBehaviour {
 		default:
 			AdMobmanager.Instance.isShowBanner(false);
 			AdMobmanager.Instance.isShowInterstitial(false);	
+			break;
 		}
 	}
 
