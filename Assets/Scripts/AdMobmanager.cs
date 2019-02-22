@@ -70,14 +70,15 @@ public class AdMobmanager : Singleton<AdMobmanager> {
 		
 // #if GOOGLE_MOBILE_ADS
 	
-		bannerView = new BannerView(bannerId, AdSize.SmartBanner, AdPosition.Bottom);		
-		
+		// bannerView = new BannerView(bannerId, AdSize.SmartBanner, AdPosition.Bottom);		
+
+
 		if(testingMode)
 			requestBanner = new AdRequest.Builder().AddTestDevice(testDeviceId).Build();
 		else
 			requestBanner = new AdRequest.Builder().Build();
 
-		interstitial = new InterstitialAd(interstitialId);
+		// interstitial = new InterstitialAd(interstitialId);
 
 		bannerView.Show();
 
@@ -86,6 +87,14 @@ public class AdMobmanager : Singleton<AdMobmanager> {
 		RequestInterstitial();
 
 
+	}
+
+	public void SetBannerView(int id){
+		// bannerView = new BannerView(bannerId[id], AdSize.SmartBanner, AdPosition.Bottom);		
+	}
+
+	public void SetInterstitial(int id){
+		// interstitial = new InterstitialAd(interstitialId[id]);
 	}
 
 	public void DestroyBanner(){
