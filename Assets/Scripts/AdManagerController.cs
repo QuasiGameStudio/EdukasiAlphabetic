@@ -7,57 +7,54 @@ public class AdManagerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		switch(SceneManager.GetActiveScene().name){
+		case "Home":
+			
+			AdMobmanager.Instance.RequestBanner(0);
+			AdMobmanager.Instance.ShowBanner();			
+			break;
+		case "LevelSelector":	
+			AdMobmanager.Instance.RequestBanner(0);
+			AdMobmanager.Instance.ShowBanner();			
+			break;
+		case "StudySelector":						
+			AdMobmanager.Instance.RequestBanner(2);
+			AdMobmanager.Instance.ShowBanner();			
+			break;
+		case "TebakHuruf":
+			AdMobmanager.Instance.SetInterstitialId(0);		
+			AdMobmanager.Instance.RequestInterstitial();
+			AdMobmanager.Instance.ShowInterstitial();
+			break;
+		case "TebakHurufKecil":
+			AdMobmanager.Instance.SetInterstitialId(1);		
+			AdMobmanager.Instance.RequestInterstitial();
+			AdMobmanager.Instance.ShowInterstitial();
+			break;
+		case "PasanganHuruf":
+			AdMobmanager.Instance.SetInterstitialId(2);
+			AdMobmanager.Instance.RequestInterstitial();
+			AdMobmanager.Instance.ShowInterstitial();
+			break;
+		case "TebakBentuk":
+			AdMobmanager.Instance.SetInterstitialId(3);
+			AdMobmanager.Instance.RequestInterstitial();
+			AdMobmanager.Instance.ShowInterstitial();
+			break;
+		case "PuzzleHuruf":
+			AdMobmanager.Instance.SetInterstitialId(4);			
+			AdMobmanager.Instance.RequestInterstitial();
+			AdMobmanager.Instance.ShowInterstitial();
+			break;
+		default:
+
+			break;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		switch(SceneManager.GetActiveScene().name){
-		case "Home":
-			AdMobmanager.Instance.SetBannerView(0);
-			AdMobmanager.Instance.isShowBanner(true);
-			AdMobmanager.Instance.isShowInterstitial(false);
-			break;
-		case "LevelSelector":
-			AdMobmanager.Instance.SetBannerView(1);
-			AdMobmanager.Instance.isShowBanner(true);
-			AdMobmanager.Instance.isShowInterstitial(false);
-			break;
-		case "StudySelector":
-			AdMobmanager.Instance.SetBannerView(2);
-			AdMobmanager.Instance.isShowBanner(true);
-			AdMobmanager.Instance.isShowInterstitial(false);
-			break;
-		case "TebakHuruf":
-			AdMobmanager.Instance.SetInterstitial(0);
-			AdMobmanager.Instance.isShowBanner(false);
-			AdMobmanager.Instance.isShowInterstitial(true);
-			break;
-		case "TebakHurufKecil":
-			AdMobmanager.Instance.SetInterstitial(1);
-			AdMobmanager.Instance.isShowBanner(false);
-			AdMobmanager.Instance.isShowInterstitial(true);
-			break;
-		case "PasanganHuruf":
-			AdMobmanager.Instance.SetInterstitial(2);
-			AdMobmanager.Instance.isShowBanner(false);
-			AdMobmanager.Instance.isShowInterstitial(true);
-			break;
-		case "TebakBentuk":
-			AdMobmanager.Instance.SetInterstitial(3);
-			AdMobmanager.Instance.isShowBanner(false);
-			AdMobmanager.Instance.isShowInterstitial(true);
-			break;
-		case "PuzzleHuruf":
-			AdMobmanager.Instance.SetInterstitial(4);
-			AdMobmanager.Instance.isShowBanner(false);
-			AdMobmanager.Instance.isShowInterstitial(true);
-			break;
-		default:
-			AdMobmanager.Instance.isShowBanner(false);
-			AdMobmanager.Instance.isShowInterstitial(false);	
-			break;
-		}
+		
 	}
 
 	// public String getSceneName(){
