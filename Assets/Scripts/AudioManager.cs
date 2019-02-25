@@ -7,6 +7,9 @@ public class AudioManager : Singleton<AudioManager>
     // Start is called before the first frame update
     AudioSource audioSource;
 
+    void Awake(){
+        audioSource = GetComponent<AudioSource>();
+    }
     void Start()
     {
         audioSource.volume = GameData.Instance.GetSFXVolume();

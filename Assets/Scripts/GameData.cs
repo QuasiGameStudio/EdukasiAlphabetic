@@ -18,4 +18,12 @@ public class GameData : Singleton<GameData>
     public float GetSFXVolume(){
         return PlayerPrefs.GetFloat("SFXVolume",1);
     }
+
+    public void SetBGMVolume(float volume){
+        PlayerPrefs.SetFloat("BGMVolume", volume);
+    }
+
+    public float GetBGMVolume(){
+        return PlayerPrefs.GetFloat("BGMVolume", 1);
+    }
 }
