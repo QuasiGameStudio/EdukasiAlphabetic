@@ -63,7 +63,7 @@ public class GM_PengenalanHuruf2 : MonoBehaviour {
 
 	private void PlaySound(int indexLetter){
 		soundLatter.clip = soundLatters[indexLetter];
-		soundLatter.Play();
+		AudioManager.Instance.PlaySFXClip(soundLatter.clip);
 	}
 
 	public void ChangeLatter(){
