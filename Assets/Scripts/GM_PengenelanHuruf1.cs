@@ -54,8 +54,7 @@ public class GM_PengenelanHuruf1 : MonoBehaviour {
 		imageHurufBesar.sprite = uplatters[indexLatter];
 		imageHurufKecil.sprite = lowlatters[indexLatter];
 		soundLatter.clip = soundLatters[indexLatter];
-		soundLatter.Play();
-
+		AudioManager.Instance.PlaySFXClip(soundLatter.clip);
 	}
 
 	public void Next(){
@@ -90,7 +89,7 @@ public class GM_PengenelanHuruf1 : MonoBehaviour {
 		if (!autoButton){
 			autoButton=true;
 			autoCoroutine = StartCoroutine(AutoPlay());
-			soundLatter.Play();
+			AudioManager.Instance.PlaySFXClip(soundLatter.clip);
 		}else{
 			autoButton=false;
 			StopCoroutine(autoCoroutine);

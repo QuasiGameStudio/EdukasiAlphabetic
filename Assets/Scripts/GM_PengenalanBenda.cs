@@ -109,14 +109,11 @@ public class GM_PengenalanBenda : MonoBehaviour {
 
 	private IEnumerator _PLayClip()
 	{
-		soundOutput.clip = soundLatters[indexLatter];
-		soundOutput.Play();
+		AudioManager.Instance.PlaySFXClip(soundLatters[indexLatter]);
 		yield return new WaitForSeconds(1);
-		soundOutput.clip = soundExtra;
-		soundOutput.Play();
+		AudioManager.Instance.PlaySFXClip(soundExtra);
 		yield return new WaitForSeconds(1);
-		soundOutput.clip = soundObjects[indexLatter];
-		soundOutput.Play();
+		AudioManager.Instance.PlaySFXClip(soundObjects[indexLatter]);
 	}
 	
 
