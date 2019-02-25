@@ -240,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4267859750480168, guid: c28429a92c6d88044ab1bba5f30951c0, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c28429a92c6d88044ab1bba5f30951c0, type: 3}
@@ -323,7 +323,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 63881290}
-        m_MethodName: GoToScene
+        m_MethodName: GoToLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -512,7 +512,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 63881290}
-        m_MethodName: GoToScene
+        m_MethodName: GoToLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -650,7 +650,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &700995013
 GameObject:
@@ -907,7 +907,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &808956097
 GameObject:
@@ -988,7 +988,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 63881290}
-        m_MethodName: GoToScene
+        m_MethodName: GoToLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1177,7 +1177,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 63881290}
-        m_MethodName: GoToScene
+        m_MethodName: GoToLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1305,7 +1305,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 63881290}
-        m_MethodName: GoToScene
+        m_MethodName: GoToLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1388,7 +1388,7 @@ RectTransform:
   - {fileID: 1836339102}
   - {fileID: 709835488}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1505,7 +1505,7 @@ PrefabInstance:
     - target: {fileID: 8632931408707072415, guid: 1f313b026a5efd342a8ecd128d647039,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8632931408707072415, guid: 1f313b026a5efd342a8ecd128d647039,
         type: 3}
@@ -1574,7 +1574,7 @@ PrefabInstance:
     - target: {fileID: 8537059944921433067, guid: 47d6f574c6cb05245964974c99720957,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537059944921433067, guid: 47d6f574c6cb05245964974c99720957,
         type: 3}

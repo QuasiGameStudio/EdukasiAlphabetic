@@ -20,8 +20,8 @@ public class GM_PuzzleHuruf : MonoBehaviour {
 	[SerializeField]
 	private Image[] options;
 
-	private int answer;
-	private int userAnswer;
+	// private int answer;
+	// private int userAnswer;
 
 	private int playTime;
 
@@ -50,7 +50,7 @@ public class GM_PuzzleHuruf : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (rightPoint == 4 && !popUpAnswer.active && !popUpReward.active){
+		if (rightPoint == 4 && !popUpAnswer.activeSelf && !popUpReward.activeSelf){
 			CheckAnswer();
 		}
 	}
@@ -163,7 +163,7 @@ public class GM_PuzzleHuruf : MonoBehaviour {
 	// }
 
 	public void reset () {
-		this.userAnswer = 5;
+		// this.userAnswer = 5;
 		rightPoint =0;
 		// reshuffleRandomQuestionLetters();
 		SetQuestion ();

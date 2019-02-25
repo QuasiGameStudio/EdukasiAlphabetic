@@ -49,7 +49,7 @@ public class GM_PasanganHuruf : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(!popUpAnswer.active && !popUpReward.active){
+		if(!popUpAnswer.activeSelf && !popUpReward.activeSelf){
 			CheckAnswer();
 		}
 	}

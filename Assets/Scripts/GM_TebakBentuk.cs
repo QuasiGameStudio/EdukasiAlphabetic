@@ -85,7 +85,7 @@ public class GM_TebakBentuk : MonoBehaviour {
 	}
 
 	public void CheckAnswer () {
-		if (!popUpAnswer.active && !popUpReward.active){
+		if (!popUpAnswer.activeSelf && !popUpReward.activeSelf){
 			playTime= playTime+1;
 			Debug.Log(playTime);
 			Debug.Log ("nice");

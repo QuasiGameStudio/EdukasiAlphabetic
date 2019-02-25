@@ -51,8 +51,8 @@ public class UIElementDraggerPuzzle : MonoBehaviour {
     
         if (Input.GetMouseButtonUp(0))
         {
-            bool changeCanDrag = false;
-            Transform tempObjectToDrag = null;
+            
+
 
             if (objectToDrag != null)
             {
@@ -69,7 +69,7 @@ public class UIElementDraggerPuzzle : MonoBehaviour {
                 }
 
                 objectToDrag.position = originalPosition;
-                tempObjectToDrag = objectToDrag;
+                
 
                 objectToDragImage.raycastTarget = true;
                 objectToDrag = null;

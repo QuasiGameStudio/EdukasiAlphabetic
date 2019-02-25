@@ -59,8 +59,8 @@ public class UIElementDragger : MonoBehaviour {
     
         if (Input.GetMouseButtonUp(0))
         {
-            bool changeCanDrag = false;
-            Transform tempObjectToDrag = null;
+            
+            // Transform tempObjectToDrag; 
 
             if (objectToDrag != null)
             {
@@ -77,7 +77,7 @@ public class UIElementDragger : MonoBehaviour {
                     }
                 }
                 objectToDrag.position = originalPosition;
-                tempObjectToDrag = objectToDrag;
+                // tempObjectToDrag = objectToDrag;
 
                 objectToDragImage.raycastTarget = true;
                 objectToDrag = null;

@@ -46,7 +46,7 @@ public class GM_TebakHurufKecil : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (!popUpAnswer.active && !popUpReward.active){
+		if (!popUpAnswer.activeSelf && !popUpReward.activeSelf){
 			CheckAnswer ();
 		}
 	}

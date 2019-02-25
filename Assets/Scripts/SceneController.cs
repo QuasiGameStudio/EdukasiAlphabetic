@@ -16,11 +16,25 @@ public class SceneController : Singleton<SceneController> {
 	}
 
 	public void GoToScene(string sceneName){
+		isSceneBanner();
 		SceneManager.LoadScene(sceneName);
 	}
 
+	private void isSceneBanner(){
+		string sceneName = SceneManager.GetActiveScene().name;
+		if (sceneName == "Home" || sceneName == "LevelSelector" || sceneName == "StudySelector"){
+			AdMobmanager.Instance.DestroyBanner();
+		}
+	}
+
 	public void GoToLevel(string sceneName){
-		AdMobmanager.Instance.ShowInterstitial(sceneName);
+		isSceneBanner();
+		AdMobmanager.Instance.SetGoToSceneWithAdName(sceneName);
+		AdMobmanager.instance.ShowInterstitial();
+		// AdManagerController.Instance.SetShowInterstitial(sceneName);
+		// AdMobmanager.Instance.SetInterstitialId(0);		
+		// AdMobmanager.Instance.RequestInterstitial();
+		// AdMobmanager.Instance.ShowInterstitial(sceneName);
 	}
 
 	public void RestartScene(){
