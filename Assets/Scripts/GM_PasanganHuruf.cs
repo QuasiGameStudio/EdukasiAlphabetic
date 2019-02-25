@@ -172,7 +172,11 @@ public class GM_PasanganHuruf : MonoBehaviour {
 		SetOptions();
 		popUpAnswer.SetActive(false);
 		popUpReward.SetActive(false);
-		soundLatter.Play();
+		PlaySound();
+	}
+
+	public void PlaySound(){
+		AudioManager.Instance.PlaySFXClip(soundLatter.clip);
 	}
 
 	

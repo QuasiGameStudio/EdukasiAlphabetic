@@ -7,7 +7,7 @@ public class AdManagerController : Singleton<AdManagerController> {
 
 	// Use this for initialization
 
-	bool showInterstitial=true;
+	// bool showInterstitial=true;
 	void Awake() {
 		AdMobmanager.Instance.ShowBanner();
 	}

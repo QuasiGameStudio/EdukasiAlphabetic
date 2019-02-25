@@ -45,7 +45,7 @@ public class AdMobmanager : Singleton<AdMobmanager> {
 
 	
 
-	int tryingToShowInterstitial=0;
+	// int tryingToShowInterstitial=0;
 
 	void Awake(){
 
