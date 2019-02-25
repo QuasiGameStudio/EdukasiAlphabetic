@@ -5,6 +5,13 @@ using UnityEngine;
 public class GameData : Singleton<GameData>
 {
     // Start is called before the first frame update
+    
+    void Awake()
+    {
+        GetSFXVolume();
+        GetBGMVolume();
+    }
+    
     void Start()
     {
         
@@ -12,7 +19,6 @@ public class GameData : Singleton<GameData>
 
     public void SetSFXVolume(float volume){
         PlayerPrefs.SetFloat("SFXVolume", volume);   
-        Debug.Log(GetSFXVolume());
     }
 
     public float GetSFXVolume(){

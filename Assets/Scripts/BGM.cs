@@ -7,8 +7,15 @@ public class BGM : MonoBehaviour
     // Start is called before the first frame update
 
     AudioSource BGMSource;
+    private static BGM BGMInstance;
 
     void Awake(){
+
+        if (BGMInstance == null){
+            BGMInstance = this;
+        }else{
+            Destroy(gameObject);
+        }
         DontDestroyOnLoad(this.gameObject);
         BGMSource = GetComponent<AudioSource>();
     }
