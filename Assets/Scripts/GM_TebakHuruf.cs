@@ -133,6 +133,10 @@ public class GM_TebakHuruf : MonoBehaviour {
 		SetOption ();
 		popUpAnswer.SetActive(false);
 		popUpReward.SetActive(false);
-		questionAudio.Play();
+		PlaySound();
+	}
+
+	public void PlaySound(){
+		AudioManager.Instance.PlaySFXClip(questionAudio.clip);
 	}
 }
