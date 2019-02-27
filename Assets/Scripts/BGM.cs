@@ -9,6 +9,9 @@ public class BGM : Singleton<BGM>
     AudioSource BGMSource;
     private static BGM BGMInstance;
 
+    [SerializeField]
+    AudioClip[] BGMClips;
+
     void Awake(){
 
         if (BGMInstance == null){
@@ -19,23 +22,26 @@ public class BGM : Singleton<BGM>
         }
         DontDestroyOnLoad(this.gameObject);
         BGMSource = GetComponent<AudioSource>();
+        SetBGMClip(0);
     }
 
     void Start()
     {
         SetBGMVolume();
-        PlayBGMClip();
     }
 
     // Update is called once per frame
     void Update()
     {
         SetBGMVolume();   
-        Debug.Log(BGMSource.volume);
     }
 
     private void PlayBGMClip(){
-        BGMSource.PlayOneShot(BGMSource.clip);
+        BGMSource.Play();
+    }
+
+    private void StopBGMClip(){
+        BGMSource.Stop();
     }
 
     private void SetBGMVolume(){
@@ -44,10 +50,16 @@ public class BGM : Singleton<BGM>
 
     public void DecreaseBGMVolume(){
         GameData.Instance.SetTempBGMVolume();
-        GameData.Instance.SetBGMVolume(GameData.Instance.GetBGMVolume()/10);
+        GameData.Instance.SetBGMVolume(GameData.Instance.GetBGMVolume()/4);
     }
 
     public void IncreaseBGMVolume(){
         GameData.Instance.GetTempBGMVolume(); 
+    }
+
+    public void SetBGMClip(int index){
+        StopBGMClip();
+        BGMSource.clip = BGMClips[index];
+        PlayBGMClip();
     }
 }

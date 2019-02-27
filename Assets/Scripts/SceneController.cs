@@ -29,18 +29,21 @@ public class SceneController : Singleton<SceneController> {
 	}
 
 	private void isSceneGame(string sceneName){
-		if(sceneName == "PasanganHuruf" || sceneName == "PengenalanBenda" || sceneName == "PengenalanHuruf1" || sceneName == "PuzzleHuruf" || sceneName == "TebakBentuk" || sceneName == "TebakHuruf" || sceneName == "TebakHurufKecil"){
+		if(sceneName == "PengenalanBenda" || sceneName == "PengenalanHuruf1"){
 			BGM.Instance.DecreaseBGMVolume();
+			BGM.Instance.SetBGMClip(1);
+		}else if(sceneName == "PuzzleHuruf" || sceneName == "TebakBentuk" || sceneName == "TebakHuruf" || sceneName == "TebakHurufKecil" || sceneName == "PasanganHuruf"){
+			BGM.Instance.DecreaseBGMVolume();
+			BGM.Instance.SetBGMClip(2);
 		}else{
 			if (SceneManager.GetActiveScene().name != "Home" && (sceneName == "LevelSelector" || sceneName == "StudySelector")){
 				BGM.Instance.IncreaseBGMVolume();
+				BGM.Instance.SetBGMClip(0);
 			}
 		}
 	}
 
 	public void GoToLevel(string sceneName){
-		isSceneBanner();
-		isSceneGame(sceneName);
 		AdMobmanager.Instance.SetGoToSceneWithAdName(sceneName);
 		AdMobmanager.instance.ShowInterstitial();
 		// AdManagerController.Instance.SetShowInterstitial(sceneName);
@@ -49,8 +52,7 @@ public class SceneController : Singleton<SceneController> {
 		// AdMobmanager.Instance.ShowInterstitial(sceneName);
 	}
 
-	public void RestartScene(){
-		
+	public void RestartScene(){	
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 }
