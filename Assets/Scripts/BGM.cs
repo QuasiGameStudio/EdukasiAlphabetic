@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BGM : MonoBehaviour
+public class BGM : Singleton<BGM>
 {
     // Start is called before the first frame update
 
@@ -13,6 +13,7 @@ public class BGM : MonoBehaviour
 
         if (BGMInstance == null){
             BGMInstance = this;
+            GameData.Instance.GetTempBGMVolume();
         }else{
             Destroy(gameObject);
         }
@@ -30,6 +31,7 @@ public class BGM : MonoBehaviour
     void Update()
     {
         SetBGMVolume();   
+        Debug.Log(BGMSource.volume);
     }
 
     private void PlayBGMClip(){
@@ -38,5 +40,14 @@ public class BGM : MonoBehaviour
 
     private void SetBGMVolume(){
         BGMSource.volume = GameData.Instance.GetBGMVolume();
+    }
+
+    public void DecreaseBGMVolume(){
+        GameData.Instance.SetTempBGMVolume();
+        GameData.Instance.SetBGMVolume(GameData.Instance.GetBGMVolume()/10);
+    }
+
+    public void IncreaseBGMVolume(){
+        GameData.Instance.GetTempBGMVolume(); 
     }
 }

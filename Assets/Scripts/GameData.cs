@@ -32,4 +32,12 @@ public class GameData : Singleton<GameData>
     public float GetBGMVolume(){
         return PlayerPrefs.GetFloat("BGMVolume", 1);
     }
+
+    public void SetTempBGMVolume(){
+        PlayerPrefs.SetFloat("tempBGMVolume", this.GetBGMVolume());
+    }
+
+    public void GetTempBGMVolume(){
+        this.SetBGMVolume(PlayerPrefs.GetFloat("tempBGMVolume", 1));
+    }
 }

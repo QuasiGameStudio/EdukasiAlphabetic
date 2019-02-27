@@ -17,6 +17,7 @@ public class SceneController : Singleton<SceneController> {
 
 	public void GoToScene(string sceneName){
 		isSceneBanner();
+		isSceneGame(sceneName);
 		SceneManager.LoadScene(sceneName);
 	}
 
@@ -27,8 +28,19 @@ public class SceneController : Singleton<SceneController> {
 		}
 	}
 
+	private void isSceneGame(string sceneName){
+		if(sceneName == "PasanganHuruf" || sceneName == "PengenalanBenda" || sceneName == "PengenalanHuruf1" || sceneName == "PuzzleHuruf" || sceneName == "TebakBentuk" || sceneName == "TebakHuruf" || sceneName == "TebakHurufKecil"){
+			BGM.Instance.DecreaseBGMVolume();
+		}else{
+			if (SceneManager.GetActiveScene().name != "Home" && (sceneName == "LevelSelector" || sceneName == "StudySelector")){
+				BGM.Instance.IncreaseBGMVolume();
+			}
+		}
+	}
+
 	public void GoToLevel(string sceneName){
 		isSceneBanner();
+		isSceneGame(sceneName);
 		AdMobmanager.Instance.SetGoToSceneWithAdName(sceneName);
 		AdMobmanager.instance.ShowInterstitial();
 		// AdManagerController.Instance.SetShowInterstitial(sceneName);
