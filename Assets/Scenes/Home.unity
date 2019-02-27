@@ -912,7 +912,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 230, y: 230}
+  m_SizeDelta: {x: 190, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &553297030
 MonoBehaviour:
@@ -950,7 +950,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 553297028}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
 --- !u!95 &553297032
 Animator:
   serializedVersion: 3
@@ -961,7 +961,7 @@ Animator:
   m_GameObject: {fileID: 553297028}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb118a79ef806c44eb48f66d9eb3fa15, type: 2}
+  m_Controller: {fileID: 9100000, guid: f43a5a456d92a7e4eb4920ac38103a82, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

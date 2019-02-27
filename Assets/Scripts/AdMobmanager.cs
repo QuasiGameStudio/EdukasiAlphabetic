@@ -45,7 +45,7 @@ public class AdMobmanager : Singleton<AdMobmanager> {
 
 	
 
-	// int tryingToShowInterstitial=0;
+	int tryingToShowInterstitial=0;
 
 	void Awake(){
 
@@ -163,31 +163,33 @@ public class AdMobmanager : Singleton<AdMobmanager> {
 
 	public void ShowInterstitial(){
 // #if GOOGLE_MOBILE_ADS
-		// while (tryingToShowInterstitial < 10){
+		while (tryingToShowInterstitial < 10){
 
 
-		interstitial.Show();			
-			// if (interstitial.IsLoaded())
-			// {	
-			// 	interstitial.Show();
-			// 	// break;
-			// }
-			// else
-			// {
-			// 	RequestInterstitial();
-			// 	// tryingToShowInterstitial++;
-			// 	if (interstitial.IsLoaded())
-			// 	{
-			// 		interstitial.Show();
-			// 	}
-			// }
-		// }
+		// interstitial.Show();			
+			if (interstitial.IsLoaded())
+			{	
+				interstitial.Show();
+				tryingToShowInterstitial=10;
+			}
+			else
+			{
+				RequestInterstitial();
+				// tryingToShowInterstitial++;
+				if (interstitial.IsLoaded())
+				{
+					interstitial.Show();
+					tryingToShowInterstitial=10;
+				}
+			}
+			tryingToShowInterstitial++;
+		}
 
-		// if(tryingToShowInterstitial >= 10){
-		// 	SceneController.Instance.GoToScene(goToSceneWithAdName);		
-		// }
+		if(tryingToShowInterstitial >= 10){
+			SceneController.Instance.GoToScene(goToSceneWithAdName);		
+		}
 		
-		// tryingToShowInterstitial=0;
+		tryingToShowInterstitial=0;
 // #endif
 	}
 

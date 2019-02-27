@@ -50,7 +50,7 @@ public class BGM : Singleton<BGM>
 
     public void DecreaseBGMVolume(){
         GameData.Instance.SetTempBGMVolume();
-        GameData.Instance.SetBGMVolume(GameData.Instance.GetBGMVolume()/4);
+        GameData.Instance.SetBGMVolume((GameData.Instance.GetBGMVolume()/20)*7);
     }
 
     public void IncreaseBGMVolume(){
