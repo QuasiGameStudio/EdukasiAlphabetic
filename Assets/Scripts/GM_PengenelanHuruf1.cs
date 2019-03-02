@@ -15,10 +15,10 @@ public class GM_PengenelanHuruf1 : MonoBehaviour {
 	private AudioClip[] soundLatters;
 
 	[SerializeField]
-	private Image imageHurufBesar;
+	private GameObject imageHurufBesar;
 
 	[SerializeField]
-	private Image imageHurufKecil;
+	private GameObject imageHurufKecil;
 
 	[SerializeField]
 	private AudioSource soundLatter;
@@ -27,6 +27,7 @@ public class GM_PengenelanHuruf1 : MonoBehaviour {
 
 	private bool autoButton;
 
+	private Coroutine awakeLetter;
 	private Coroutine autoCoroutine;
 	// Use this for initialization
 	void Start () {
@@ -51,14 +52,19 @@ public class GM_PengenelanHuruf1 : MonoBehaviour {
 	}
 
 	private void SetLatter(){
-		imageHurufBesar.sprite = uplatters[indexLatter];
-		imageHurufKecil.sprite = lowlatters[indexLatter];
-		soundLatter.clip = soundLatters[indexLatter];
-		AudioManager.Instance.PlaySFXClip(soundLatter.clip);
+		// imageHurufBesar.sprite = uplatters[indexLatter];
+		// imageHurufKecil.sprite = lowlatters[indexLatter];
+		// soundLatter.clip = soundLatters[indexLatter];
+		// AudioManager.Instance.PlaySFXClip(soundLatter.clip);
+		imageHurufBesar.SetActive(false);
+		imageHurufKecil.SetActive(false);
+		awakeLetter = StartCoroutine(AwakeSetLetter());
 	}
 
 	public void Next(){
 		autoButton=false;
+		StopCoroutine(awakeLetter);
+		awakeLetter=null;
 		if (autoCoroutine!=null){
 			autoButton=false;
 			StopCoroutine(autoCoroutine);
@@ -73,6 +79,8 @@ public class GM_PengenelanHuruf1 : MonoBehaviour {
 
 	public void Prev(){
 		autoButton=false;
+		StopCoroutine(awakeLetter);
+		awakeLetter=null;
 		if (autoCoroutine!=null){
 			autoButton=false;
 			StopCoroutine(autoCoroutine);
@@ -91,12 +99,27 @@ public class GM_PengenelanHuruf1 : MonoBehaviour {
 			autoCoroutine = StartCoroutine(AutoPlay());
 			AudioManager.Instance.PlaySFXClip(soundLatter.clip);
 		}else{
+			StopCoroutine(awakeLetter);
+			awakeLetter=null;
 			autoButton=false;
 			StopCoroutine(autoCoroutine);
 			autoCoroutine=null;
 		}
 	}
 
+	private IEnumerator AwakeSetLetter()
+	{
+		soundLatter.clip = soundLatters[indexLatter];
+		imageHurufBesar.GetComponent<Image>().sprite = uplatters[indexLatter];
+		imageHurufBesar.SetActive(true);
+		imageHurufBesar.GetComponent<Animator>().SetTrigger("Start");
+		yield return new WaitForSeconds(2);
+		imageHurufKecil.GetComponent<Image>().sprite = lowlatters[indexLatter];
+		imageHurufKecil.SetActive(true);
+		imageHurufKecil.GetComponent<Animator>().SetTrigger("Start");
+		yield return new WaitForSeconds(3);
+		AudioManager.Instance.PlaySFXClip(soundLatter.clip);
+	}
 	private IEnumerator AutoPlay()
 	{
 		if (indexLatter == 25){
@@ -105,7 +128,7 @@ public class GM_PengenelanHuruf1 : MonoBehaviour {
 		for (int i = indexLatter; i < uplatters.Length; i++)
 		{
 			SetLatter();
-			yield return new WaitForSeconds(2);
+			yield return new WaitForSeconds(5);
 			indexLatter++;
 		}
 		indexLatter=0;	

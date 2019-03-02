@@ -236,8 +236,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4b764997e93abd24aa5c47470cb92943, type: 3}
   - {fileID: 8300000, guid: db8ec6e31f92dfc4aa74b78b0a1ce7a9, type: 3}
   - {fileID: 8300000, guid: 2b3d0345f9e17bc4680588b00661163c, type: 3}
-  imageHurufBesar: {fileID: 1915086176}
-  imageHurufKecil: {fileID: 1062229596}
+  imageHurufBesar: {fileID: 1915086173}
+  imageHurufKecil: {fileID: 1062229593}
   soundLatter: {fileID: 222007756}
 --- !u!1 &222007754
 GameObject:
@@ -1147,7 +1147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1062229594
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1561,7 +1561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1915086174
 RectTransform:
   m_ObjectHideFlags: 0
