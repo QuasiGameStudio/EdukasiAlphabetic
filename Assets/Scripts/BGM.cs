@@ -17,12 +17,12 @@ public class BGM : Singleton<BGM>
         if (BGMInstance == null){
             BGMInstance = this;
             GameData.Instance.GetTempBGMVolume();
+            DontDestroyOnLoad(this.gameObject);
+            BGMSource = GetComponent<AudioSource>();
+            SetBGMClip(0);
         }else{
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
-        BGMSource = GetComponent<AudioSource>();
-        SetBGMClip(0);
     }
 
     void Start()

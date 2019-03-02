@@ -13,7 +13,7 @@ public class AdManagerController : Singleton<AdManagerController> {
 	}
 
 	void Start(){
-		AdMobmanager.Instance.ShowInterstitial();
+		// AdMobmanager.Instance.ShowInterstitial();
 	}
 	
 	// Update is called once per frame

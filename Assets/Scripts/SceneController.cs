@@ -17,8 +17,10 @@ public class SceneController : Singleton<SceneController> {
 
 	public void GoToScene(string sceneName){
 		isSceneBanner();
-		isSceneGame(sceneName);
-		SceneManager.LoadScene(sceneName);
+		if (sceneName != null){
+			isSceneGame(sceneName);
+			SceneManager.LoadScene(sceneName);
+		}
 	}
 
 	private void isSceneBanner(){
