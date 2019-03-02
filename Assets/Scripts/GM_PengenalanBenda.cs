@@ -96,13 +96,17 @@ public class GM_PengenalanBenda : MonoBehaviour {
 		// soundOutputs.clip = 
 	}
 
-	public void PlayClip(){
-		// StartCoroutine("_PlayClip");
+	public void PlayClipButton(){
 		if(autoCoroutine != null){
 			autoButton=false;
 			StopCoroutine(autoCoroutine);
 			autoCoroutine=null;
 		}
+		PlayClip();
+	}
+
+	public void PlayClip(){
+		// StartCoroutine("_PlayClip");
 		if (playSoundCoroutine != null){
 			StopCoroutine(playSoundCoroutine);
 			playSoundCoroutine =null;
@@ -121,6 +125,7 @@ public class GM_PengenalanBenda : MonoBehaviour {
 		wordImage.GetComponent<Animator>().SetTrigger("Start");
 		wordObject.GetComponent<Animator>().SetTrigger("Start");
 		AudioManager.Instance.PlaySFXClip(soundObjects[indexLatter]);
+		yield return new WaitForSeconds(1);
 	}
 	
 
@@ -128,22 +133,28 @@ public class GM_PengenalanBenda : MonoBehaviour {
 		if (!autoButton){
 			autoButton=true;
 			autoCoroutine = StartCoroutine(AutoPlay());
-			// soundLatter.Play();
+			Debug.Log("YEay");
 		}else{
 			autoButton=false;
 			StopCoroutine(autoCoroutine);
 			autoCoroutine=null;
+			Debug.Log("NoYEay");
 		}
 	}
 
 	private IEnumerator AutoPlay()
 	{
+		if (indexLatter == 25){
+			indexLatter=0;
+		}
 		for (int i = indexLatter; i < uplatters.Length; i++)
 		{
 			SetLatter();
+			Debug.Log(i+" "+uplatters.Length);
 			yield return new WaitForSeconds(3);
 			indexLatter++;
 		}
-		
+		indexLatter=0;	
+		autoButton=false;	
 	}
 }
