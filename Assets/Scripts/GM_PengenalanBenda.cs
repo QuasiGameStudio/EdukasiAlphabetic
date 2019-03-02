@@ -24,13 +24,16 @@ public class GM_PengenalanBenda : MonoBehaviour {
 	private AudioClip soundExtra;
 
 	[SerializeField]
-	private Image imageHurufBesar;
+	private GameObject imageHurufBesar;
 
 	[SerializeField]
-	private Image imageHurufKecil;
+	private GameObject imageHurufKecil;
 
 	[SerializeField]
-	private Image wordImage;
+	private GameObject wordImage;
+
+	[SerializeField]
+	private GameObject wordObject;
 
 	[SerializeField]
 	private AudioSource soundOutput;
@@ -53,9 +56,9 @@ public class GM_PengenalanBenda : MonoBehaviour {
 	}
 
 	private void SetLatter(){
-		imageHurufBesar.sprite = uplatters[indexLatter];
-		imageHurufKecil.sprite = lowlatters[indexLatter];
-		wordImage.sprite = wordImages[indexLatter];
+		imageHurufBesar.GetComponent<Image>().sprite = uplatters[indexLatter];
+		imageHurufKecil.GetComponent<Image>().sprite = lowlatters[indexLatter];
+		wordImage.GetComponent<Image>().sprite = wordImages[indexLatter];
 		PlayClip();
 	}
 
@@ -109,10 +112,14 @@ public class GM_PengenalanBenda : MonoBehaviour {
 
 	private IEnumerator _PLayClip()
 	{
+		imageHurufBesar.GetComponent<Animator>().SetTrigger("Start");
+		imageHurufKecil.GetComponent<Animator>().SetTrigger("Start");
 		AudioManager.Instance.PlaySFXClip(soundLatters[indexLatter]);
 		yield return new WaitForSeconds(1);
 		AudioManager.Instance.PlaySFXClip(soundExtra);
 		yield return new WaitForSeconds(1);
+		wordImage.GetComponent<Animator>().SetTrigger("Start");
+		wordObject.GetComponent<Animator>().SetTrigger("Start");
 		AudioManager.Instance.PlaySFXClip(soundObjects[indexLatter]);
 	}
 	
