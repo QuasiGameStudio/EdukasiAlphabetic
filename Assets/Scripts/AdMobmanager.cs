@@ -157,7 +157,9 @@ public class AdMobmanager : Singleton<AdMobmanager> {
 
 	public void ShowBanner(){
 // #if GOOGLE_MOBILE_ADS		
-		bannerView.Show();	
+		if (bannerView != null){
+			bannerView.Show();	
+		}
 // #endif
 	}
 

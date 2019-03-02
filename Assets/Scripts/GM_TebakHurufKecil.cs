@@ -55,7 +55,6 @@ public class GM_TebakHurufKecil : MonoBehaviour {
 		mainNumber = randomUpLatters[indexRandomUpLetters];
 		indexRandomUpLetters++;
 		questionImage.sprite = uplatters[mainNumber];
-		questionImage.SetNativeSize ();
 	}
 
 	private void SetOption () {
@@ -71,7 +70,6 @@ public class GM_TebakHurufKecil : MonoBehaviour {
 				}
 				options[i].sprite = lowlatters[x];
 			}
-			options[i].SetNativeSize ();
 		}
 	}
 

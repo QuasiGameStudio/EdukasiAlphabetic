@@ -54,7 +54,7 @@ public class GM_TebakBentuk : MonoBehaviour {
 		indexRandomUpLetters++;
 		questionImage.sprite = uplatters[mainNumber];
 		questionImage.GetComponent<Tile_>().SetNumber(mainNumber);
-		questionImage.SetNativeSize ();
+		// questionImage.SetNativeSize ();
 	}
 
 	private void SetOption () {
@@ -72,7 +72,7 @@ public class GM_TebakBentuk : MonoBehaviour {
 				options[i].sprite = lowlatters[x];
 				options[i].GetComponent<Tile_>().SetNumber(x);
 			}
-			options[i].SetNativeSize ();
+			// options[i].SetNativeSize ();
 		}
 	}
 

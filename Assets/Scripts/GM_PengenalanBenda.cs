@@ -133,12 +133,10 @@ public class GM_PengenalanBenda : MonoBehaviour {
 		if (!autoButton){
 			autoButton=true;
 			autoCoroutine = StartCoroutine(AutoPlay());
-			Debug.Log("YEay");
 		}else{
 			autoButton=false;
 			StopCoroutine(autoCoroutine);
 			autoCoroutine=null;
-			Debug.Log("NoYEay");
 		}
 	}
 
@@ -150,7 +148,6 @@ public class GM_PengenalanBenda : MonoBehaviour {
 		for (int i = indexLatter; i < uplatters.Length; i++)
 		{
 			SetLatter();
-			Debug.Log(i+" "+uplatters.Length);
 			yield return new WaitForSeconds(3);
 			indexLatter++;
 		}

@@ -79,7 +79,7 @@ public class GM_PasanganHuruf : MonoBehaviour {
 				}else{
 					options[indexAnswer].transform.GetChild(0).GetComponent<Image>().sprite=lowLatters[mainNumber];
 				}
-				options[indexAnswer].transform.GetChild(0).GetComponent<Image>().SetNativeSize();
+				// options[indexAnswer].transform.GetChild(0).GetComponent<Image>().SetNativeSize();
 				i++;
 			}
 		}while(i != 2);
@@ -104,7 +104,7 @@ public class GM_PasanganHuruf : MonoBehaviour {
 					options[i].transform.GetChild(0).GetComponent<Image>().sprite=lowLatters[randomLowLatters[indexLow]];
 				}
 			}
-			options[i].transform.GetChild(0).GetComponent<Image>().SetNativeSize();
+			// options[i].transform.GetChild(0).GetComponent<Image>().SetNativeSize();
 			options[i].GetComponent<Image>().color = new Color32(255,255,255,255);
 		}
 	}
