@@ -37,6 +37,11 @@ public class GM_PasanganHuruf : MonoBehaviour {
 	[SerializeField]
 	private GameObject popUpReward;
 
+	[SerializeField]
+	private GameObject blurImage;
+
+	[SerializeField]
+	private GameObject confetti;
 	// Use this for initialization
 	void Start () {
 		answer = new int[2];
@@ -135,11 +140,16 @@ public class GM_PasanganHuruf : MonoBehaviour {
 
 	private IEnumerator showPopUp(){
 		if (playTime == 10){
+			blurImage.SetActive(true);
 			popUpReward.SetActive(true);
+			confetti.SetActive(true);
 		}else{
+			blurImage.SetActive(true);
 			popUpAnswer.SetActive(true);
 			yield return new WaitForSeconds(3);
+			blurImage.SetActive(false);
 			popUpAnswer.SetActive(false);
+			blurImage.SetActive(false);
 			reset();
 		}
 	}
@@ -170,6 +180,8 @@ public class GM_PasanganHuruf : MonoBehaviour {
 		reshuffle();
 		SetQuestion();
 		SetOptions();
+		blurImage.SetActive(false);
+		confetti.SetActive(false);
 		popUpAnswer.SetActive(false);
 		popUpReward.SetActive(false);
 		PlaySound();
