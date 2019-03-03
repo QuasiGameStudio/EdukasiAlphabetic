@@ -36,6 +36,12 @@ public class GM_TebakBentuk : MonoBehaviour {
 	[SerializeField]
 	private GameObject popUpReward;
 
+	[SerializeField]
+	private GameObject blurImage;
+
+	[SerializeField]
+	private GameObject conffetti;
+
 	// Use this for initialization
 	void Start () {
 		playTime=0;
@@ -96,10 +102,14 @@ public class GM_TebakBentuk : MonoBehaviour {
 	private IEnumerator showPopUp(){
 		Debug.Log("playtime:"+playTime);
 		if (playTime == 10){
+			blurImage.SetActive(true);
 			popUpReward.SetActive(true);
+			conffetti.SetActive(true);
 		}else{
+			blurImage.SetActive(true);
 			popUpAnswer.SetActive(true);
 			yield return new WaitForSeconds(1);
+			blurImage.SetActive(false);
 			popUpAnswer.SetActive(false);
 			reset();
 		}
@@ -141,5 +151,7 @@ public class GM_TebakBentuk : MonoBehaviour {
 		SetOption ();
 		popUpAnswer.SetActive(false);
 		popUpReward.SetActive(false);
+		blurImage.SetActive(false);
+		conffetti.SetActive(false);
 	}
 }

@@ -54,7 +54,10 @@ public class UIElementDragger : MonoBehaviour {
 
         if (dragging)
         {
-            objectToDrag.position = Input.mousePosition;
+            Camera cam = GetComponent<Camera>();
+            Vector3 point = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.nearClipPlane));
+            objectToDrag.position = point;
+            // objectToDrag.position = Input.mousePosition;
         }
     
         if (Input.GetMouseButtonUp(0))
