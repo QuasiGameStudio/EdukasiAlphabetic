@@ -37,6 +37,12 @@ public class GM_PuzzleHuruf : MonoBehaviour {
 	[SerializeField]
 	private GameObject popUpReward;
 
+	[SerializeField]
+	private GameObject blurImage;
+
+	[SerializeField]
+	private GameObject confetti;
+
 	private int rightPoint;
 
 	// Use this for initialization
@@ -141,12 +147,15 @@ public class GM_PuzzleHuruf : MonoBehaviour {
 	}
 
 	private IEnumerator showPopUp(){
+		blurImage.SetActive(true);
 		if (playTime == 10){
+			confetti.SetActive(true);
 			popUpReward.SetActive(true);
 		}else{
 			popUpAnswer.SetActive(true);
 			yield return new WaitForSeconds(1);
 			popUpAnswer.SetActive(false);
+			blurImage.SetActive(false);
 			reset();
 		}
 	}
@@ -170,5 +179,7 @@ public class GM_PuzzleHuruf : MonoBehaviour {
 		SetOption ();
 		popUpAnswer.SetActive(false);
 		popUpReward.SetActive(false);
+		confetti.SetActive(false);
+		blurImage.SetActive(false);
 	}
 }

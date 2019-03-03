@@ -420,12 +420,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229260734}
   m_CullTransparentMesh: 0
---- !u!224 &440171014 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1801511812211803908, guid: 6f53539226a51204eab96a9342d82b78,
-    type: 3}
-  m_PrefabInstance: {fileID: 1801511812381965570}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &455011499 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1802741015051581899, guid: 6f53539226a51204eab96a9342d82b78,
@@ -442,6 +436,10 @@ PrefabInstance:
     - target: {fileID: 155770, guid: 039f0809d882b7f44ac9a410a3f7fa26, type: 3}
       propertyPath: m_Name
       value: ConfettiShowerRainbow
+      objectReference: {fileID: 0}
+    - target: {fileID: 155770, guid: 039f0809d882b7f44ac9a410a3f7fa26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 445124, guid: 039f0809d882b7f44ac9a410a3f7fa26, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1259,7 +1257,7 @@ Transform:
   m_Children:
   - {fileID: 933474812}
   - {fileID: 1023898936}
-  - {fileID: 440171014}
+  - {fileID: 1801511812381965571}
   - {fileID: 1849586725}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1615,6 +1613,11 @@ PrefabInstance:
       objectReference: {fileID: 1820590647}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f53539226a51204eab96a9342d82b78, type: 3}
+--- !u!4 &1801511812381965571 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1801511812381965570}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3983409620075901833
 PrefabInstance:
   m_ObjectHideFlags: 0

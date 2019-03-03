@@ -36,6 +36,12 @@ public class GM_TebakHuruf : MonoBehaviour {
 	[SerializeField]
 	private GameObject popUpReward;
 
+	[SerializeField]
+	private GameObject blurImage;
+	
+	[SerializeField]
+	private GameObject confetti;
+
 	// Use this for initialization
 	void Start () {
 		playTime =0;
@@ -88,12 +94,15 @@ public class GM_TebakHuruf : MonoBehaviour {
 	}
 
 	private IEnumerator showPopUp(){
+		blurImage.SetActive(true);
 		if (playTime == 10){
+			confetti.SetActive(true);
 			popUpReward.SetActive(true);
 		}else{
 			popUpAnswer.SetActive(true);
 			yield return new WaitForSeconds(1);
 			popUpAnswer.SetActive(false);
+			blurImage.SetActive(false);
 			reset();
 		}
 	}
@@ -133,6 +142,8 @@ public class GM_TebakHuruf : MonoBehaviour {
 		SetOption ();
 		popUpAnswer.SetActive(false);
 		popUpReward.SetActive(false);
+		confetti.SetActive(false);
+		blurImage.SetActive(false);
 		PlaySound();
 	}
 
